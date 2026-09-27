@@ -1,0 +1,22 @@
+= Nav Drift
+:description: Compare nav.adoc / site-nav against published pages; orphans + missing-from-nav.
+:page-orig-author: Ryan Johnson
+:page-last-edited: 2026-09-27
+
+**Nav Drift** diffs `nav.adoc` / `site-nav.adoc` xref/link targets against pages that exist under the content root. Flags nav entries that point nowhere and (optionally) pages missing from nav.
+
+Support: support@devcentr.org
+
+== Install
+
+[source,bash]
+----
+pnpm add -D github:antora-supplemental/nav-drift#v0.1.0
+----
+
+== CLI
+
+[source,bash]
+----
+npx nav-drift --root ./docs --require-in-nav --out ./build/nav-drift [--fail]
+----

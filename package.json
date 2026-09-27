@@ -1,6 +1,6 @@
 {
   "name": "@antora-supplemental/nav-drift",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI: compare nav.adoc / site-nav against published pages; report orphans and missing-from-nav",
   "license": "MIT",
   "author": "Ryan Johnson (https://github.com/AMDphreak)",

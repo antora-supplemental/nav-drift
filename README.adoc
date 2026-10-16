@@ -5,7 +5,7 @@
 
 **Nav Drift** diffs `nav.adoc` / `site-nav.adoc` xref/link targets against pages that exist under the content root. Flags nav entries that point nowhere and (optionally) pages missing from nav.
 
-Pages **intentionally** omitted from the left nav (changelog-details, appendix xrefs, etc.) must declare `:hide-from-navtree:` at the top of the AsciiDoc file so `--require-in-nav` audits do not treat them as accidental orphans. Legacy `:page-nav-hidden:` is still recognized. Marked pages appear in the report under **intentional** (`nav-hidden-page`), not as failures.
+Pages **intentionally** omitted from the left nav (changelog-details, appendix xrefs, etc.) must declare `:hide-page:` or `:hide-from-navtree:` at the top of the AsciiDoc file so `--require-in-nav` audits do not treat them as accidental orphans. `:hide-page:` means hidden from the nav tree only — the page stays published. Legacy `:page-nav-hidden:` is still recognized. Marked pages appear in the report under **intentional** (`nav-hidden-page`), not as failures.
 
 Support: support@devcentr.org
 
@@ -29,13 +29,13 @@ On xref-only pages (not listed in `nav.adoc` on purpose):
 
 [source,asciidoc]
 ----
-:hide-from-navtree:
+:hide-page:
 :navtree-parent: changelog.adoc
 = 2026-10-16
 
 == Topic title
 ----
 
-Use an empty value or `true` / `yes`. Optional `:navtree-parent:` names the parent page when the path does not follow a `*-details/` folder pattern. Set `:hide-from-navtree: false` to force the page back into orphan findings during migration. Legacy `:page-nav-hidden:` / `:page-nav-parent:` still parse.
+Use an empty value or `true` / `yes`. `:hide-from-navtree:` is a synonym. Optional `:navtree-parent:` names the parent page when the path does not follow a `*-details/` folder pattern. Set `:hide-page: false` to force the page back into orphan findings during migration. Legacy `:page-nav-hidden:` / `:page-nav-parent:` still parse.
 
 Convention proposal (upstream nav model): link:https://docs.antora-supplemental.org/docs/ROOT/proposals/soft-nav-page-toc.html[SoftNav page TOC and nav-hidden pages^].

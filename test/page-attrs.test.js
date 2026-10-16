@@ -5,7 +5,8 @@ const assert = require('node:assert/strict')
 const { isHideFromNavtree, parseNavtreeDirectives } = require('../lib/page-attrs.js')
 
 describe('hide-from-navtree directive', () => {
-  it('detects hide-from-navtree and legacy page-nav-hidden', () => {
+  it('detects hide-page, hide-from-navtree, and legacy page-nav-hidden', () => {
+    assert.equal(isHideFromNavtree(':hide-page:\n= Title\n'), true)
     assert.equal(isHideFromNavtree(':hide-from-navtree:\n= Title\n'), true)
     assert.equal(isHideFromNavtree(':page-nav-hidden:\n= Title\n'), true)
     assert.equal(isHideFromNavtree(':hide-from-navtree: false\n'), false)

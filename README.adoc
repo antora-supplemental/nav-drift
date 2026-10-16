@@ -30,11 +30,12 @@ On xref-only pages (not listed in `nav.adoc` on purpose):
 [source,asciidoc]
 ----
 :page-nav-hidden:
+:page-nav-parent: changelog.adoc
 = 2026-10-16
 
 == Topic title
 ----
 
-Use an empty value or `true` / `yes`. Set `:page-nav-hidden: false` to force the page back into orphan findings during migration.
+Use an empty value or `true` / `yes`. Optional `:page-nav-parent:` names the parent page when the path does not follow a `*-details/` folder pattern. Set `:page-nav-hidden: false` to force the page back into orphan findings during migration.
 
 Convention proposal (upstream nav model): link:https://docs.antora-supplemental.org/docs/ROOT/proposals/soft-nav-page-toc.html[SoftNav page TOC and nav-hidden pages^].

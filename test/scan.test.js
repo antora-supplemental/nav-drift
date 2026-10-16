@@ -21,7 +21,7 @@ describe('nav-drift', () => {
     fs.writeFileSync(path.join(tmp, 'modules', 'ROOT', 'pages', 'orphan.adoc'), '= Orphan\n')
     fs.writeFileSync(
       path.join(tmp, 'modules', 'ROOT', 'pages', 'hidden-detail.adoc'),
-      ':page-nav-hidden:\n= Hidden\n'
+      ':hide-from-navtree:\n= Hidden\n'
     )
   })
   after(() => fs.rmSync(tmp, { recursive: true, force: true }))

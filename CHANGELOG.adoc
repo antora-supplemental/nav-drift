@@ -1,5 +1,10 @@
 = Changelog
 
+== 0.1.3 — hide-from-navtree directive
+
+* Primary directive `:hide-from-navtree:` (legacy `:page-nav-hidden:` still parses).
+* Optional `:navtree-parent:` (legacy `:page-nav-parent:`).
+
 == 0.1.2 — explicit nav-hidden pages
 
 * Honor `:page-nav-hidden:` on pages when `--require-in-nav` is set; report as `nav-hidden-page` (intentional) instead of `page-missing-from-nav`.

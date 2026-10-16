@@ -2,18 +2,18 @@
 
 const { describe, it } = require('node:test')
 const assert = require('node:assert/strict')
-const { isHideFromNavtree, parseNavtreeDirectives } = require('../lib/page-attrs.js')
+const { isHidePage, isHideFromNavtree, parseNavtreeDirectives } = require('../lib/page-attrs.js')
 
-describe('hide-from-navtree directive', () => {
-  it('detects hide-page, hide-from-navtree, and legacy page-nav-hidden', () => {
-    assert.equal(isHideFromNavtree(':hide-page:\n= Title\n'), true)
+describe('hide-page directive', () => {
+  it('detects hide-page and legacy aliases', () => {
+    assert.equal(isHidePage(':hide-page:\n= Title\n'), true)
     assert.equal(isHideFromNavtree(':hide-from-navtree:\n= Title\n'), true)
-    assert.equal(isHideFromNavtree(':page-nav-hidden:\n= Title\n'), true)
-    assert.equal(isHideFromNavtree(':hide-from-navtree: false\n'), false)
+    assert.equal(isHidePage(':page-nav-hidden:\n= Title\n'), true)
+    assert.equal(isHidePage(':hide-page: false\n'), false)
   })
 
   it('reads navtree-parent', () => {
-    const meta = parseNavtreeDirectives(':hide-from-navtree:\n:navtree-parent: changelog.adoc\n')
+    const meta = parseNavtreeDirectives(':hide-page:\n:navtree-parent: changelog.adoc\n')
     assert.ok(meta)
     assert.equal(meta.parent, 'changelog.adoc')
   })

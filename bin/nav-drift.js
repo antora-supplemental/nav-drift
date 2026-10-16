@@ -40,7 +40,8 @@ function main () {
   writeOutputs(report, path.resolve(opts.out))
   progress.done(
     report.summary.findings + ' finding(s) (missing=' + report.summary.missing +
-    ', orphan=' + report.summary.orphan + ')'
+    ', orphan=' + report.summary.orphan +
+    ', nav-hidden=' + (report.summary.intentionalNavHidden || 0) + ')'
   )
   if (opts.fail && report.summary.findings > 0) process.exit(1)
 }

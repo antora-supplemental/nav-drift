@@ -1,6 +1,9 @@
 = Changelog
 
-== Unreleased
+== 0.1.2 — explicit nav-hidden pages
+
+* Honor `:page-nav-hidden:` on pages when `--require-in-nav` is set; report as `nav-hidden-page` (intentional) instead of `page-missing-from-nav`.
+* Triage report lists intentional nav-hidden pages separately; `--fail` still only counts actionable findings.
 
 == 0.1.0 — 2026-09-27
 

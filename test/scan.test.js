@@ -19,6 +19,10 @@ describe('nav-drift', () => {
     fs.writeFileSync(path.join(tmp, 'modules', 'ROOT', 'pages', 'index.adoc'), '= Home\n')
     fs.writeFileSync(path.join(tmp, 'modules', 'ROOT', 'pages', 'guide.adoc'), '= Guide\n')
     fs.writeFileSync(path.join(tmp, 'modules', 'ROOT', 'pages', 'orphan.adoc'), '= Orphan\n')
+    fs.writeFileSync(
+      path.join(tmp, 'modules', 'ROOT', 'pages', 'hidden-detail.adoc'),
+      ':page-nav-hidden:\n= Hidden\n'
+    )
   })
   after(() => fs.rmSync(tmp, { recursive: true, force: true }))
 
@@ -26,8 +30,11 @@ describe('nav-drift', () => {
     const scan = scanNavDrift({ root: tmp, requireInNav: true })
     assert.ok(scan.findings.some((f) => f.kind === 'nav-missing-page' && f.target === 'gone'))
     assert.ok(scan.findings.some((f) => f.kind === 'page-missing-from-nav' && f.target === 'orphan'))
+    assert.ok(!scan.findings.some((f) => f.target === 'hidden-detail'))
+    assert.ok(scan.intentionalNavHidden.some((f) => f.kind === 'nav-hidden-page' && f.target === 'hidden-detail'))
     const report = buildReport(scan)
     assert.equal(report.tool, 'nav-drift')
     assert.ok(report.summary.missing >= 1)
+    assert.equal(report.summary.intentionalNavHidden, 1)
   })
 })
